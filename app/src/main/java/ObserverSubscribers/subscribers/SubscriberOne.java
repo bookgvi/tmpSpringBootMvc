@@ -4,7 +4,7 @@ import ObserverSubscribers.Configuration;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
-import java.util.Properties;
+import java.util.*;
 
 @Service
 public class SubscriberOne implements ISubscriber {
@@ -14,6 +14,9 @@ public class SubscriberOne implements ISubscriber {
     @Override
     public void subscribe() {
         Properties props = new Properties();
+        Map<String, String> map = Map.of("k", "v");
+        ArrayList
+        Iterator<Map.Entry<String, String>> iterator = map.entrySet().iterator();
         try {
             props.load(this.getClass().getResourceAsStream(Configuration.SUBSCRIBERS_LIST));
             if (props.containsKey(subscriberName) || props.containsValue(subscriberClass)) {

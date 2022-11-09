@@ -59,6 +59,10 @@ public class DBSource implements ISubscriberSource {
         dataSource.setUsername(props.getProperty("spring.datasource.username"));
         dataSource.setPassword(props.getProperty("spring.datasource.password"));
 
+//        Connection connection = dataSource.getConnection();
+//        PreparedStatement statement = connection.prepareStatement("SELECT count(*) FROM information_schema.tables WHERE table_name = ?");
+//        statement.setString(1, "subscriber");
+//        ResultSet resultSet = statement.executeQuery();
         return new JdbcTemplate(dataSource);
     }
 }
