@@ -15,7 +15,6 @@ public class SubscriberOne implements ISubscriber {
     public void subscribe() {
         Properties props = new Properties();
         Map<String, String> map = Map.of("k", "v");
-        ArrayList
         Iterator<Map.Entry<String, String>> iterator = map.entrySet().iterator();
         try {
             props.load(this.getClass().getResourceAsStream(Configuration.SUBSCRIBERS_LIST));
