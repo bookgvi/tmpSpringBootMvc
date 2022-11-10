@@ -1,9 +1,11 @@
 package SpringQuickly.singletone.service;
 
 
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 
-@Component("pushServiceSingletoneScope1")
+@Service("pushServiceSingletoneScope1")
+@Lazy
 public class PushServiceImpl implements IService {
     public static IService INSTANCE = getINSTANCE();
     private String chf = "QQQ";

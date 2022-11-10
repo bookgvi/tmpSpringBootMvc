@@ -1,22 +1,22 @@
 package SpringQuickly.singletone.main;
 
 import SpringQuickly.singletone.config.ProjectConfig;
-import SpringQuickly.singletone.service.IService;
-import SpringQuickly.singletone.service.MailServiceImpl;
 import SpringQuickly.singletone.service.PushServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Logger;
 
 public class Application {
     private static Logger logger = Logger.getLogger(Application.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(ProjectConfig.class);
         logger.info("Context created:\n\t" + ctx.getDisplayName());
 
-        IService mailService = ctx.getBean(MailServiceImpl.class);
+//        IService mailService = ctx.getBean(MailServiceImpl.class);
+
 
         PushServiceImpl pushServiceSingle1 = ctx.getBean("pushSingletone1", PushServiceImpl.class);
         PushServiceImpl pushServiceSingle2 = ctx.getBean("pushSingletone2", PushServiceImpl.class);
@@ -31,5 +31,6 @@ public class Application {
         System.out.println(pushServiceSingle2.getChf());
         System.out.println(pushServiceSingletoneScope1.getChf());
         System.out.println(pushServiceSingletoneScope2.getChf());
+
     }
 }
